@@ -2,7 +2,7 @@ import csv
 import MySQLdb
 
 # variaveis do ambiente local
-path = 'DATASET/movie_metadata.csv'
+path = '../DATASET/movie_metadata.csv'
 user = raw_input("Digite o user de acesso ao database: ") 
 password = raw_input("Digite a password: ")
 database = raw_input("Digite o nome do database: ")

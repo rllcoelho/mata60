@@ -1,13 +1,15 @@
 import csv
 import MySQLdb
+import getpass
 
 # variaveis do ambiente local
-path = '../DATASET/movie_metadata.csv'
-user = raw_input("Digite o user de acesso ao database: ") 
-password = raw_input("Digite a password: ")
-database = raw_input("Digite o nome do database: ")
+path = raw_input("Digite o caminho para o arquivo de metadados: ")
+user = raw_input("Digite o usuario de acesso ao banco: ") 
+password = getpass.getpass("Digite a senha: ")
+database = raw_input("Digite o nome do banco: ")
+qt_insertions = raw_input("Digite o numero maximo de insercoes: ")
 
-#conexao com o database
+#conexao com o banco
 mydb = MySQLdb.connect(host='localhost',
     user=user,
     passwd=password,
@@ -19,11 +21,12 @@ count_tiles = 1
 count_actors = 1
 count_genres = 1
 
-# inicializa o que sera o conjunto de todos os generos de filmes
+# inicializa o dicionario de todos os generos de filmes e de todos os atores
 dict_genres = dict() 
 dict_actors = dict()
 
 i = 0
+
 with open(path, 'r') as movies_file:
 
     csv_reader = csv.reader(movies_file)
@@ -31,10 +34,9 @@ with open(path, 'r') as movies_file:
     # percorre as linhas do arquivo csv
     for row in csv_reader:
 
-        # limita o numero de linhas percorridas ao valor de i, para evitar travamento
-        if(i == 30):
+        # limita o numero de linhas percorridas ao valor de qt_insertions, para reduzir o tempo de execucao
+        if(i == int(qt_insertions)):
             exit(1)
-            print(i)
         i+=1
 
         movie_tile = row[11]
@@ -118,5 +120,5 @@ with open(path, 'r') as movies_file:
         # incrementa o contador de filmes
         count_tiles+=1
 
-# encerra a conexao com o database
+# encerra a conexao com o banco
 cursor.close()

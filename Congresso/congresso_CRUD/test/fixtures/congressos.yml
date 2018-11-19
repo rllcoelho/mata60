@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  local: MyString
+  dataRealizacao: 2018-11-18
+  editora: MyString
+  tema: MyString
+
+two:
+  nome: MyString
+  local: MyString
+  dataRealizacao: 2018-11-18
+  editora: MyString
+  tema: MyString

@@ -1,0 +1,10 @@
+https://codeburst.io/how-to-build-a-rails-app-on-top-of-an-existing-database-baa3fe6384a0
+
+https://github.com/seyhunak/twitter-bootstrap-rails
+
+https://jornadadodev.com.br/cursos/curso-de-ruby-rails
+
+> rails new meuapp -d mysql
+
+> vim /meuapp/config/database.yml
+

@@ -44,7 +44,7 @@ with open(path, 'r') as movies_file:
         movie_genres = set(row[9].split("|"))
 
         # insere o titulo dos filmes
-        sql = "INSERT INTO filme (identificador, titulo, duracaoLocacao) VALUES (%s, %s, %s)"
+        sql = "INSERT INTO filmes (identificador, titulo, duracaoLocacao) VALUES (%s, %s, %s)"
         val = (count_tiles, movie_tile, 1)
         cursor.execute(sql,val)
         mydb.commit()
@@ -57,7 +57,7 @@ with open(path, 'r') as movies_file:
                 id_genre = dict_genres[genre]
                 
                 # insere na tabela filme_has_categoria
-                sql = "INSERT INTO filme_has_categoria (filme_identificador, categoria_identificador) VALUES (%s, %s)"
+                sql = "INSERT INTO filmes_has_categorias (filme_identificador, categoria_identificador) VALUES (%s, %s)"
                 val = (count_tiles, id_genre)
                 cursor.execute(sql,val)
 
@@ -67,12 +67,12 @@ with open(path, 'r') as movies_file:
             # se o genero nao foi cadastrado ainda 
             else:
                 # insere na tabela categoria
-                sql = "INSERT INTO categoria (identificador, nome) VALUES (%s, %s)"
+                sql = "INSERT INTO categorias (identificador, nome) VALUES (%s, %s)"
                 val = (count_genres, genre)
                 cursor.execute(sql,val)
 
                 # insere na tabela filme_has_categoria
-                sql = "INSERT INTO filme_has_categoria (filme_identificador, categoria_identificador) VALUES (%s, %s)"
+                sql = "INSERT INTO filmes_has_categorias (filme_identificador, categoria_identificador) VALUES (%s, %s)"
                 val = (count_tiles, count_genres)
                 cursor.execute(sql,val)
 
@@ -91,7 +91,7 @@ with open(path, 'r') as movies_file:
                 id_actor = dict_actors[actor]
                 
                 # insere na tabela estrelato
-                sql = "INSERT INTO estrelato (filme_identificador, ator_identificador) VALUES (%s, %s)"
+                sql = "INSERT INTO estrelatos (filme_identificador, ator_identificador) VALUES (%s, %s)"
                 val = (count_tiles, id_actor)
                 cursor.execute(sql,val)
 
@@ -101,12 +101,12 @@ with open(path, 'r') as movies_file:
             # se o ator nao foi cadastrado ainda 
             else:
                 # insere na tabela ator
-                sql = "INSERT INTO ator (identificador, nomeReal) VALUES (%s, %s)"
+                sql = "INSERT INTO atores (identificador, nomeReal) VALUES (%s, %s)"
                 val = (count_actors, actor)
                 cursor.execute(sql,val)
 
                 # insere na tabela estrelato
-                sql = "INSERT INTO estrelato (filme_identificador, ator_identificador) VALUES (%s, %s)"
+                sql = "INSERT INTO estrelatos (filme_identificador, ator_identificador) VALUES (%s, %s)"
                 val = (count_tiles, count_actors)
                 cursor.execute(sql,val)
 

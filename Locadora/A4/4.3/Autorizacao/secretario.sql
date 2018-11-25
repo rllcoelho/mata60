@@ -1,0 +1,5 @@
+CREATE ROLE secretario;
+
+GRANT SELECT,INSERT,UPDATE,DELETE ON clientes TO secretario;
+GRANT SELECT,INSERT,UPDATE,DELETE ON telefones TO secretario;
+GRANT SELECT,INSERT,UPDATE,DELETE ON emprestimos TO secretario;

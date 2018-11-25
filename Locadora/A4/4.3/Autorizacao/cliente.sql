@@ -1,0 +1,3 @@
+CREATE ROLE cliente;
+
+GRANT INSERT

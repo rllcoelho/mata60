@@ -6,7 +6,7 @@ START TRANSACTION;
                  FROM fitas f
                  INNER JOIN filmes m
                  ON f.filme_identificador = m.identificador
-                 WHERE m.titulo = 'movie_title' LIMIT 1);
+                 WHERE m.titulo LIKE 'Avatar%');
 
   SET @fitadisponibilidade = (SELECT disponibilidade
                               FROM fitas

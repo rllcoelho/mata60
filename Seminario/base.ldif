@@ -1,0 +1,19 @@
+dn: ou=edicao2018,dc=congresso
+objectClass: top
+objectClass: organizationalUnit
+ou: edicao2018
+
+dn: ou=participantes,ou=edicao2018,dc=congresso
+objectClass: top
+objectClass: organizationalUnit
+ou: participantes
+
+dn: ou=autores,ou=participantes,ou=edicao2018,dc=congresso
+objectClass: top
+objectClass: organizationalUnit
+ou: autores
+
+dn: ou=membrosComite,ou=participantes,ou=edicao2018,dc=congresso
+objectClass: top
+objectClass: organizationalUnit
+ou: membrosComite

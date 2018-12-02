@@ -1,0 +1,6 @@
+dn: documentIdentifier=1,ou=artigos,ou=2018,ou=SBBD,dc=ifip
+objectClass: top
+objectClass: document
+documentIdentifier: 1 
+documentTitle: Teorema do bla bla bla
+documentAuthor: cn=Joao da Silva,ou=autores,ou=2018,ou=SBBD,dc=ifip

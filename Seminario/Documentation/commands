@@ -1,1 +1,1 @@
-ldapadd -D "cn=admin,dc=congresso" -W -f base.ldif
+ldapadd -D "cn=admin,dc=ifip" -W -f base.ldif

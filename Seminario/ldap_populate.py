@@ -58,7 +58,6 @@ for row in membrosComite:
             "sn": [row[2]]
             }
     result = ldap_con.add(dn, ldap.modlist.addModlist(modlist))
-    print "Tentativa de inseir membro do comite. Resultado: " + result
 
 #insersao de autores e artigos na base ldap. Para cada autor, um artigo desse autor
 for autor, artigo in zip(autores, artigos):
@@ -70,7 +69,7 @@ for autor, artigo in zip(autores, artigos):
             "sn": [autor[2]]
             }
     result_autor = ldap_con.add(autor_dn, ldap.modlist.addModlist(autor_modlist))
-    print "Tentativa de inserir autor. Resultado: " + result
+
 
     artigo_dn = "documentIdentifier=" + str(artigo[1]) + ',ou=artigos,ou=2018,ou=SBBD,dc=ifip' 
     artigo_modlist = {
@@ -80,4 +79,4 @@ for autor, artigo in zip(autores, artigos):
             "documentAuthor": [autor_dn]
             }
     result_artigo = ldap_con.add(artigo_dn, ldap.modlist.addModlist(artigo_modlist))
-    print "Tentativa de inserir artigo. Resultado: " + result_artigo
+

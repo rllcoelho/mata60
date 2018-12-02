@@ -1,19 +1,24 @@
-dn: ou=edicao2018,dc=congresso
+dn: ou=SBBD,dc=ifip
 objectClass: top
 objectClass: organizationalUnit
-ou: edicao2018
+ou: SBBD
 
-dn: ou=participantes,ou=edicao2018,dc=congresso
+dn: ou=2018,ou=SBBD,dc=ifip
 objectClass: top
 objectClass: organizationalUnit
-ou: participantes
+ou: 2018
 
-dn: ou=autores,ou=participantes,ou=edicao2018,dc=congresso
+dn: ou=artigos,ou=2018,ou=SBBD,dc=ifip
 objectClass: top
 objectClass: organizationalUnit
-ou: autores
+ou: artigos
 
-dn: ou=membrosComite,ou=participantes,ou=edicao2018,dc=congresso
+dn: ou=membrosComite,ou=2018,ou=SBBD,dc=ifip
 objectClass: top
 objectClass: organizationalUnit
 ou: membrosComite
+
+dn: ou=autores,ou=2018,ou=SBBD,dc=ifip
+objectClass: top
+objectClass: organizationalUnit
+ou: atores

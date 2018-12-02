@@ -48,28 +48,31 @@ ldap_con = ldap.initialize('ldap:///localhost')
 
 #insersao de membros do comite na base ldap
 for row in membrosComite:
-    dn = "uid=" + str(row[0]) + ',ou=membrosComite,ou=2018,ou=SBBD,dc=IFIP'
+    membro_cn = row[1] + ' ' + row[2]
+    dn = "cn=" + membro_cn + ',ou=membrosComite,ou=2018,ou=SBBD,dc=ifip'
     modlist = {
-            "uid": str([row[0]]),
-            "name": [row[1]],
-            "lastname": [row[2]]
+            "objectClass": ["top", "person", "organizationalPerson"],
+            "cn": [membro_cn],
+            "sn": [row[2]]
             }
     result = ldap_con.add(dn, ldap.modlist.addModlist(modlist))
 
 #insersao de autores e artigos na base ldap. Para cada autor, um artigo desse autor
 for autor, artigo in zip(autores, artigos):
-    autor_dn = "uid=" + str(autor[0]) + ',ou=autores,ou=2018,ou=SBBD,dc=IFIP'
+    autor_cn = autor[1] + ' ' + autor[2]
+    autor_dn = "cn=" + autor_cn + ',ou=autores,ou=2018,ou=SBBD,dc=ifip'
     autor_modlist = {
-            "uid": str([autor[0]]),
-            "name": [autor[1]],
-            "lastname": [autor[2]]
+            "objectClass": ["top", "person", "organizationalPerson"],
+            "cn": [autor_cn],
+            "sn": [autor[2]]
             }
     result_autor = ldap_con.add(autor_dn, ldap.modlist.addModlist(autor_modlist))
     
-    artigo_dn = "di=" + str(artigo[1]) + ',ou=artigos,ou=2018,ou=SBBD,dc=IFIP' 
+    artigo_dn = "documentIdentifier=" + str(artigo[1]) + ',ou=artigos,ou=2018,ou=SBBD,dc=ifip' 
     artigo_modlist = {
+            "objectClass": ["top", "document"],
             "documentIdentifier": str([artigo[1]]),
             "documentTitle": [artigo[0]],
-            "documentAuthor": [autor[1] + ' ' + autor[2]]
+            "documentAuthor": [autor_dn]
             }
     result_artigo = ldap_con.add(artigo_dn, ldap.modlist.addModlist(artigo_modlist))

@@ -13,8 +13,10 @@ qt_total = qt_membros + qt_autores
 
 '''
 user = 'root'
-password = ''
 database = 'CASCONet'
+qt_membros = 10
+qt_autores = 10
+qt_total = qt_membros + qt_autores
 '''
 
 #conexao com o banco
@@ -57,7 +59,7 @@ for row in membrosComite:
             "cn": [membro_cn],
             "sn": [row[2]]
             }
-    result = ldap_con.add(dn, ldap.modlist.addModlist(modlist))
+    result = ldap_con.add_s(dn, ldap.modlist.addModlist(modlist))
 
 #insersao de autores e artigos na base ldap. Para cada autor, um artigo desse autor
 for autor, artigo in zip(autores, artigos):
@@ -68,8 +70,7 @@ for autor, artigo in zip(autores, artigos):
             "cn": [autor_cn],
             "sn": [autor[2]]
             }
-    result_autor = ldap_con.add(autor_dn, ldap.modlist.addModlist(autor_modlist))
-
+    result_autor = ldap_con.add_s(autor_dn, ldap.modlist.addModlist(autor_modlist))
 
     artigo_dn = "documentIdentifier=" + str(artigo[1]) + ',ou=artigos,ou=2018,ou=SBBD,dc=ifip' 
     artigo_modlist = {
@@ -78,5 +79,4 @@ for autor, artigo in zip(autores, artigos):
             "documentTitle": [artigo[0]],
             "documentAuthor": [autor_dn]
             }
-    result_artigo = ldap_con.add(artigo_dn, ldap.modlist.addModlist(artigo_modlist))
-
+    result_artigo = ldap_con.add_s(artigo_dn, ldap.modlist.addModlist(artigo_modlist))
